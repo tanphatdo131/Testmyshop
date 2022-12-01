@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test/ui/product_overview_screen.dart';
 import 'package:test/ui/products/product_detail_screen.dart';
 import 'package:test/ui/products/product_manager.dart';
+import 'package:test/ui/products/user_products_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: const SafeArea(
-          child: ProductsOverviewScreen(),
+          child: UserProductsScreen(),
+            //ProductsOverviewScreen(),
             //ProductsManager().item[0],
         ),
       );
