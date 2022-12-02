@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'products/products_grid.dart';
+import 'package:test/ui/cart/cart_screen.dart';
+import 'products_grid.dart';
+import '../shared/app_drawer.dart';
 
 enum FilterOptions { favorites, all }
 
@@ -23,7 +25,8 @@ Widget build(BuildContext context) {
         buildShoppingCartIcon(),
       ],
     ),
-  body: ProductsGrid (_showOnlyFavorites),
+    drawer: const AppDrawer(),
+    body: ProductsGrid (_showOnlyFavorites),
 );
 }
 
@@ -33,6 +36,7 @@ Widget buildShoppingCartIcon() {
       Icons.shopping_cart,
     ),
     onPressed: (){
+      Navigator.of(context).pushNamed(CartScreen.routeName);
       print('Go to cart screen');
     },
 );

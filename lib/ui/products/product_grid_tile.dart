@@ -19,9 +19,16 @@ Widget build (BuildContext context) {
       footer: buildGridFooterBar (context),
       child: GestureDetector(
         onTap: () {
+
+          Navigator.of(context).pushNamed(
+            ProducDetailScreen.routeName,
+            arguments: product.id,
+          );
+          
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (ctx) => ProducDetailScreen(product),
+
             )
 
           );

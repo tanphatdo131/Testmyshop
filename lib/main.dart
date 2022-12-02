@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test/ui/product_overview_screen.dart';
+import 'package:test/ui/products/product_overview_screen.dart';
 import 'package:test/ui/products/product_detail_screen.dart';
 import 'package:test/ui/products/product_manager.dart';
 import 'package:test/ui/products/user_products_screen.dart';
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   const MyApp({Key? key}): super(key: key);
   
   @override
-  Widget build (BuildContext context) {
+  Widget build(BuildContext context) {
     return MaterialApp(
       title: 'My Shop',
       debugShowCheckedModeBanner: false,
@@ -26,13 +26,34 @@ class MyApp extends StatelessWidget {
           secondary: Colors.deepOrange,
         ),
       ),
-      home: const SafeArea(
-          child: OrdersScreen(),
+      home: const ProductsOverviewScreen(),
+      routes: {
+        CartScreen.routeName:
+              (ctx) => const CartScreen(),
+        OrdersScreen.routeName: 
+              (ctx) => const OrdersScreen(),
+        UserProductsScreen.routeName:
+              (ctx) => const UserProductsScreen(),
+      },
+      onGenerateRoute: (settings) {
+        if (settings.name == ProducDetailScreen.routeName) {
+            final productId = settings.arguments as String;
+            return MaterialPageRoute(
+              builder: (ctx) {
+                return ProducDetailScreen(
+                  ProductsManager().findById(productId)!,
+                );
+              },
+            
+            );
+        }
+        return null;
+      },
+          //child: OrdersScreen(),
             //CartScreen(),
             //UserProductsScreen(),
             //ProductsOverviewScreen(),
-            //ProductsManager().item[0],
-        ),
-      );
+    );   //ProductsManager().item[0],
+    
   }
 }

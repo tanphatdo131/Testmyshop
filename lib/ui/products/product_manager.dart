@@ -39,6 +39,14 @@ class ProductsManager {
       isFavorite: true,
     ),
   ];
+
+  Product? findById(String id) {
+    try{
+      return _items.firstWhere((item) => item.id == id);
+    } catch (error) {
+      return null;
+    }
+  }
   int get itemCout {
     return _items.length;
   }
