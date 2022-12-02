@@ -3,6 +3,9 @@ import 'package:test/ui/cart/cart_screen.dart';
 import 'products_grid.dart';
 import '../shared/app_drawer.dart';
 
+import '../cart/cart_manager.dart';
+import 'top_right_badge.dart';
+
 enum FilterOptions { favorites, all }
 
   class ProductsOverviewScreen extends StatefulWidget {
@@ -31,14 +34,17 @@ Widget build(BuildContext context) {
 }
 
 Widget buildShoppingCartIcon() {
-  return IconButton(
-    icon: const Icon(
-      Icons.shopping_cart,
-    ),
-    onPressed: (){
+  return TopRightBadge(
+    data: CartManager().productCount,
+    child: IconButton(
+      icon: const Icon(
+        Icons.shopping_cart,
+      ),
+    onPressed: () {
       Navigator.of(context).pushNamed(CartScreen.routeName);
       print('Go to cart screen');
     },
+  ),
 );
 }
 
