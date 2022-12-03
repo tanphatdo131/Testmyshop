@@ -2,38 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'product_grid_tile.dart';
 import 'product_manager.dart';
+import 'package:test/models/product.dart';
 
 import '../../models/product.dart';
 
 class ProductsGrid extends StatelessWidget {
-final bool showFavorites;
+  final bool showFavorites;
 
-const ProductsGrid (this.showFavorites, {super.key});
+  const ProductsGrid(this.showFavorites, {super.key});
 
-@override
-Widget build(BuildContext context) {
-  //Đọc ra danh sách các product sẽ được hiển thị từ ProductsManager
-  final products = context.select<ProductsManager, List<Product>>(
-    (productsManager) => showFavorites
-        ? productsManager.favoriteItems
-        : productsManager.item);
+  @override
+  Widget build(BuildContext context) {
+    final productsManager = ProducsManager();
+    // Đọc ra danh sách các product sẽ được hiển thị từ ProductsManager
+    final products = context.select<ProducsManager, List<Product>>(
+        (productsManager) => showFavorites
+            ? productsManager.favoriteItems
+            : productsManager.items);
 
-  final productsManager = ProductsManager();
-  final product =
-
-
-showFavorites ? productsManager.favoriteItems : productsManager.item;
- return GridView.builder(
+    // final products =
+    //     showFavorites ? productsManager.favoriteItems : productsManager.items;
+    return GridView.builder(
       padding: const EdgeInsets.all(10.0),
       itemCount: products.length,
-      itemBuilder: (ctx, i) => ProductGridTile (products[i]),
+      itemBuilder: (ctx, i) => ProductGridTile(products[i]),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 2,
-      childAspectRatio: 3/2,
-      crossAxisSpacing: 10,
-      mainAxisSpacing: 10,
-   ),
-  );
+        crossAxisCount: 2,
+        childAspectRatio: 3 / 2,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+      ),
+    );
   }
 }
 

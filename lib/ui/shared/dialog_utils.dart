@@ -13,9 +13,8 @@ Future<bool?> showConfirmDialog(BuildContext context, String message) {
             Navigator.of(ctx).pop(false);
           },
         ),
-
         TextButton(
-          child: const Text('Yes'), 
+          child: const Text('Yes'),
           onPressed: () {
             Navigator.of(ctx).pop(true);
           },
@@ -24,5 +23,4 @@ Future<bool?> showConfirmDialog(BuildContext context, String message) {
     ),
   );
 }
-
 

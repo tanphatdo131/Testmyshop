@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:test/ui/cart/cart_manager.dart';
 
 import '../../models/cart_item.dart';
 import '../shared/dialog_utils.dart';
@@ -18,7 +20,7 @@ Widget build(BuildContext context) {
   return Dismissible(
     key: ValueKey(cardItem.id),
     background: Container(
-      color: Theme. of (context).errorColor, 
+      color: Theme.of(context).errorColor, 
       alignment: Alignment.centerRight,
       padding: const EdgeInsets. only (right: 20), 
       margin: const EdgeInsets.symmetric(
@@ -39,7 +41,8 @@ Widget build(BuildContext context) {
       );
     },
     onDismissed: (direction) {
-      print('Cart item dismissed');
+      context.read<CartManager>().removeSingleItem(productId);
+      //print('Cart item dismissed');
   },
   child: buildItemCard(),
 );
@@ -52,7 +55,7 @@ Widget buildItemCard() {
       vertical: 4,
 ),
 
-child: Padding (
+child: Padding(
   padding: const EdgeInsets.all(8),
   child: ListTile(
     leading: CircleAvatar (

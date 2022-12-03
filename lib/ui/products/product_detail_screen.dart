@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import '../../models/product.dart';
 //import 'package:flutter/material.dart';
 
-class ProducDetailScreen extends StatelessWidget{
-    static const routeName = '/product-detail';
-  const ProducDetailScreen(
-      this.product, {
-      super.key,
-    });
+class ProductDetailScreen extends StatelessWidget {
+  static const routeName = '/product-detail';
+  const ProductDetailScreen(
+    this.product, {
+    super.key,
+  });
 
   final Product product;
 
@@ -28,19 +28,19 @@ class ProducDetailScreen extends StatelessWidget{
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox (height: 10), 
+            const SizedBox(height: 10),
             Text(
-              '\$${product.price}', 
+              '\$${product.price}',
               style: const TextStyle(
                 color: Colors.grey,
-                fontSize: 20,
+                fontSize: 28,
               ),
             ),
             const SizedBox(
               height: 10,
             ),
             Container(
-              padding: const EdgeInsets.symmetric (horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               width: double.infinity,
               child: Text(
                 product.description,
