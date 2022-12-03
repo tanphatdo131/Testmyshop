@@ -1,8 +1,10 @@
-
+import 'package:flutter/foundation.dart';
+import '../../models/product.dart';
+import 'package:provider/provider.dart';
 
 import 'package:test/models/product.dart';
 
-class ProductsManager {
+class ProductsManager with ChangeNotifier {
   final List<Product> _items =[
     Product(
       id: 'p1',
@@ -58,4 +60,32 @@ class ProductsManager {
   List<Product> get favoriteItems {
     return _items.where((item) => item.isFavorite).toList();
   }
+
+  void addProduct (Product product) {
+    _items.add(
+      product.copyWith(
+        id: 'p${DateTime.now().toIso8601String()}',
+      ),
+    ); 
+    notifyListeners();
+  }
+      void updateProduct(Product product) {
+      final index = _items.indexWhere((item) => item.id == product.id); 
+      if (index>= 0) {
+       _items[index] = product;
+        notifyListeners();
+      }
+      }
+      
+      void toggleFavoriteStatus(Product product) { 
+        final savedStatus = product.isFavorite; 
+        product.isFavorite = !savedStatus;
+      }
+      void deleteProduct(String id) {
+      final index = _items.indexWhere((item) => item.id == id);
+      _items.removeAt(index);
+      notifyListeners();
+      }
 }
+
+  

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:test/ui/shared/app_drawer.dart';
+import '../shared/app_drawer.dart';
 
 import 'user_product_list_tile.dart';
 import 'product_manager.dart';
@@ -27,17 +29,21 @@ return Scaffold (
 );
 }
 Widget buildUserProductListView(ProductsManager productsManager) {
-  return ListView.builder(
-    itemCount: productsManager.itemCout,
-    itemBuilder: (ctx, i) =>Column (
-      children: [
-        UserProductListTile(
-          productsManager.item[i],
+  return Consumer<ProductsManager>(
+    builder: (ctx, productsManager, child) {
+      return ListView.builder(
+        itemCount: productsManager.itemCout,
+        itemBuilder: (ctx, i) => Column(
+          children: [
+            UserProductListTile(
+              productsManager.item[i],
         ),
         const Divider (),
       ],
     ),
   );
+},
+);
 }
 
 Widget buildAddButton() {
