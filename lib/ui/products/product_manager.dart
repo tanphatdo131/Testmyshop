@@ -8,36 +8,36 @@ class ProducsManager with ChangeNotifier {
   final List<Product> _item = [
     Product(
       id: 'p1',
-      title: 'Red Shirt',
-      description: 'A red shirt - it is pretty red!',
-      price: 29.99,
+      title: 'Trà Sữa Truyền Thống',
+      description: 'Hàng bán chạy',
+      price: 1,
       imageUrl:
-          'https://cdn.pixabay.com/photo/2016/10/02/22/17/red-t-shirt-1710578_1280.jpg',
+          'https://cf.shopee.vn/file/2d4ff2d412055e790a770d53d65684e6',
       isFavorite: true,
     ),
     Product(
       id: 'p2',
-      title: 'Trousers',
-      description: 'A nice pair of trousers.',
-      price: 59.99,
+      title: 'Trà Sữa Matcha',
+      description: 'Hàng hot',
+      price: 1.2,
       imageUrl:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Trousers%2C_dress_%28AM_1960.022-8%29.jpg/512px-Trousers%2C_dress_%28AM_1960.022-8%29.jpg',
+          'https://cdn.tgdd.vn/Files/2021/12/09/1403510/cach-lam-matcha-tran-chau-duong-den-uong-ngon-cuc-thich-202112092206182099.jpg',
     ),
     Product(
       id: 'p3',
-      title: 'Yellow Scarf',
-      description: 'Warm and cozy - exactly what you need for the winter.',
-      price: 19.99,
+      title: 'Trà Sữa Socola',
+      description: 'Ngon quãi đạn',
+      price: 1.3,
       imageUrl:
-          'https://live.staticflickr.com/4043/4438260868_cc79b3369d_z.jpg',
+          'https://debokor.com/Thumb.ashx?s=580&file=/UploadImages/shops/Debokor/socola.jpg',
     ),
     Product(
       id: 'p4',
-      title: 'A Pan',
-      description: 'Prepare any meal you want.',
-      price: 49.99,
+      title: 'Trà Sữa Trân Châu Đường Đen',
+      description: 'Tạm uống được',
+      price: 1.5,
       imageUrl:
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZxmLAY4aypttu-PrNXSs0q__gQgYsZsuTbA&usqp=CAU',
       isFavorite: true,
     ),
   ];
